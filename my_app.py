@@ -1,0 +1,57 @@
+from edifice import App, Component, Label, TextInput, View, Slider, Button
+from data_model import DataModel
+from data_value import DataValue
+from my_edit_field import MyEditField
+
+
+class MyApp(Component):
+    def __init__(self,
+        dataModel: DataModel,
+    ):
+        super().__init__()
+        self.__model = dataModel
+        self.__rendered = 0
+
+    def render(self):
+        self.__rendered += 1
+        print(f"rendered: {self.__rendered}")
+        return View(layout="column")(
+            MyEditField(
+                label = "Text input value 1:",
+                value = self.__model.value1,
+                onChanged = self.__onValue1Changed
+            ),
+            MyEditField(
+                label = "Text input value 2:",
+                value = self.__model.value2,
+                onChanged = self.__onValue2Changed
+            ),
+            MyEditField(
+                label = "Text input value 3:",
+                value = self.__model.value3,
+                onChanged = self.__onValue3Changed
+            ),
+            Button(
+                title = "solve",
+                on_click = self.__onSolveButtonClicked
+            )
+        )
+
+    def __onSolveButtonClicked(self):
+        self.__model.__doMath1()
+    
+    def __onValue1Changed(self, value):
+        print(f'new value: {value}')
+        self.__model.changeValue1(value)
+        self.set_state()
+
+    def __onValue2Changed(self, value):
+        print(f'new value: {value}')
+        self.__model.changeValue2(value)
+        self.set_state()
+
+    def __onValue3Changed(self, value):
+        print(f'new value: {value}')
+        self.__model.changeValue3(value)
+        self.set_state()
+
