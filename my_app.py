@@ -1,6 +1,5 @@
-from edifice import App, Component, Label, TextInput, View, Slider, Button
+from edifice import Component, Label, TextInput, View, Slider, Button
 from data_model import DataModel
-from data_value import DataValue
 from my_edit_field import MyEditField
 
 
@@ -40,7 +39,7 @@ class MyApp(Component):
 
     def __setState(self):
         self.__enableOnChangeCallback = False
-        self.set_state()
+        self.setState()
         self.__enableOnChangeCallback = True
 
     def __onSolveButtonClicked(self):
@@ -48,15 +47,14 @@ class MyApp(Component):
     
     def __onValue1Changed(self, value):
         print(f'new value: {value}')
-        self.__set_state()
+        self.__setState()
 
     def __onValue2Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue2(value)
-        self.__set_state()
+        self.__setState()
 
     def __onValue3Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue3(value)
-        self.__set_state()
-
+        self.__setState()
