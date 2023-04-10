@@ -39,7 +39,7 @@ class MyApp(Component):
 
     def __setState(self):
         self.__enableOnChangeCallback = False
-        self.setState()
+        self.set_state()
         self.__enableOnChangeCallback = True
 
     def __onSolveButtonClicked(self):
