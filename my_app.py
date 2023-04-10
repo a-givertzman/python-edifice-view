@@ -11,6 +11,7 @@ class MyApp(Component):
         super().__init__()
         self.__model = dataModel
         self.__rendered = 0
+        self.__enableOnChangeCallback = True
 
     def render(self):
         self.__rendered += 1
@@ -19,21 +20,21 @@ class MyApp(Component):
             MyEditField(
                 label = "Text input value 1:",
                 value = self.__model.value1,
-                onChanged = self.__onValue1Changed
+                onChanged = self.__onValue1Changed if self.__enableOnChangeCallback else None
             ),
             MyEditField(
                 label = "Text input value 2:",
                 value = self.__model.value2,
-                onChanged = self.__onValue2Changed
+                onChanged = self.__onValue2Changed if self.__enableOnChangeCallback else None
             ),
             MyEditField(
                 label = "Text input value 3:",
                 value = self.__model.value3,
-                onChanged = self.__onValue3Changed
+                onChanged = self.__onValue3Changed if self.__enableOnChangeCallback else None
             ),
             Button(
                 title = "solve",
-                on_click = self.__onSolveButtonClicked
+                on_click = self.__onSolveButtonClicked if self.__enableOnChangeCallback else None
             )
         )
 
@@ -43,15 +44,21 @@ class MyApp(Component):
     def __onValue1Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue1(value)
+        self.__enableOnChangeCallback = False
         self.set_state()
+        self.__enableOnChangeCallback = True
 
     def __onValue2Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue2(value)
+        self.__enableOnChangeCallback = False
         self.set_state()
+        self.__enableOnChangeCallback = True
 
     def __onValue3Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue3(value)
+        self.__enableOnChangeCallback = False
         self.set_state()
+        self.__enableOnChangeCallback = True
 
