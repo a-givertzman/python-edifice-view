@@ -8,21 +8,21 @@ class DataValue:
         if (isinstance(value, str)):
             self.__converted = False
             self.__value = value
-            print(f'[StrConversion] input is str')
+            # print(f'[DataValue] input is str')
         else:
             self.__converted = True
             self.__out = value
-            print(f'[StrConversion] input is numeric')
+            # print(f'[DataValue] input is numeric')
 
     @property
     def toFloat(self):
         if (not self.__converted):
-            print(f'[StrConversion] converting: {self.__value}')
+            print(f'[DataValue] converting: {self.__value}')
             try:
                 out = float(self.__value)
                 self.__out = out
             except ValueError as err:
-                print(f'[StrConversion] error: {err}')
+                print(f'[DataValue] error: {err}')
             self.__converted = True
         return self.__out
     

@@ -26,8 +26,8 @@ class DataModel:
     def __doMath1(self):
         value1 = self.value1.toFloat
         value2 = self.value2.toFloat
-        # for i in range(1000000000000):
-        #     value3 = 0.001 * (value1 + value2)
+        for i in range(100000000):
+            value3 = (value1 + value2) / 2
         value3 = (value1 + value2) / 2
         self.__updateValuesForView(value1, value2, value3)
 
