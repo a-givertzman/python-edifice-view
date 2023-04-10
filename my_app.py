@@ -46,16 +46,13 @@ class MyApp(Component):
         self.__model.__doMath1()
     
     def __onValue1Changed(self, value):
-        print(f'new value: {value}')
         self.__model.changeValue1(value)
         self.__setState()
 
     def __onValue2Changed(self, value):
-        print(f'new value: {value}')
         self.__model.changeValue2(value)
         self.__setState()
 
     def __onValue3Changed(self, value):
-        print(f'new value: {value}')
         self.__model.changeValue3(value)
         self.__setState()

@@ -19,17 +19,24 @@ class MyEditField(Component):
                 Label(self.__label),
                 Slider(
                     value = self.__value.toFloat,
-                    on_change = self.__onValueChanged
+                    on_mouse_up = self.__onSliderComplete,
+                    on_change = self.__onValueChanged,
                 ),
                 TextInput(
                     text = self.__value.toStr,
                     on_change = self.__onValueChanged,
-                    # on_edit_finish = self.set_state,
+                    on_edit_finish = self.__onTextInputComplete,
                 ),
             )
 
-    def __onValueChanged(self, value):
-        print(f'new value: {value}')
-        self.__value.update(value)
+
+    def __onSliderComplete(self, value):
         if self.__onChanged: 
-            self.__onChanged(value)
+            self.__onChanged(self.__value.toFloat)
+
+    def __onTextInputComplete(self):
+        if self.__onChanged: 
+            self.__onChanged(self.__value.toFloat)
+
+    def __onValueChanged(self, value):
+        self.__value.update(value)
