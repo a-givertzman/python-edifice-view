@@ -47,6 +47,7 @@ class MyApp(Component):
     
     def __onValue1Changed(self, value):
         print(f'new value: {value}')
+        self.__model.changeValue1(value)
         self.__setState()
 
     def __onValue2Changed(self, value):
