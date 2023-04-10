@@ -38,27 +38,25 @@ class MyApp(Component):
             )
         )
 
+    def __setState(self):
+        self.__enableOnChangeCallback = False
+        self.set_state()
+        self.__enableOnChangeCallback = True
+
     def __onSolveButtonClicked(self):
         self.__model.__doMath1()
     
     def __onValue1Changed(self, value):
         print(f'new value: {value}')
-        self.__model.changeValue1(value)
-        self.__enableOnChangeCallback = False
-        self.set_state()
-        self.__enableOnChangeCallback = True
+        self.__set_state()
 
     def __onValue2Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue2(value)
-        self.__enableOnChangeCallback = False
-        self.set_state()
-        self.__enableOnChangeCallback = True
+        self.__set_state()
 
     def __onValue3Changed(self, value):
         print(f'new value: {value}')
         self.__model.changeValue3(value)
-        self.__enableOnChangeCallback = False
-        self.set_state()
-        self.__enableOnChangeCallback = True
+        self.__set_state()
 
