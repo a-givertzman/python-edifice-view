@@ -1,5 +1,5 @@
 from typing import Callable
-from edifice import App, Component, Label, TextInput, View, Slider
+from edifice import Component, Label, TextInput, View, Slider
 
 from data_value import DataValue
 
